@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bangers', cursive;
+    color: rgb(216, 78, 78);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+p {
+    font-family: 'Merriweather', serif;
+}
+
+header {
+    border-bottom: 3px solid red;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: red;
+    text-shadow: 0 0 10px red, 0 0 20px white;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px red, 0 0 20px white;
+    }
+    to {
+        text-shadow: 0 0 20px red, 0 0 30px white;
+    }
+}
+
+.fs-3 {
+    font-size: 3.5rem;
+    font-family: 'Bangers', cursive;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: red;
+    text-shadow: 0 0 15px red, 0 0 30px white, 0 0 40px red;
+    background: linear-gradient(45deg, red, white, red);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 1.5s infinite alternate, colorShift 3s infinite alternate;
+}
+
+nav a {
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: red !important;
+}
+
+.btn-dark {
+    background-color: black;
+    border: 2px solid red;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-dark:hover {
+    background-color: red;
+    color: black;
+}
+
+.btn-danger {
+    border: 2px solid white;
+}
+
+.btn-primary {
+    background-color: red;
+    border: 2px solid white;
+    color: black;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: white;
+    color: red;
+}
+
+.card {
+    background-color: #111;
+    border: 2px solid red;
+    color: white;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    color: red;
+}
+
+footer {
+    border-top: 3px solid red;
+}
+
