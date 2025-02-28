@@ -3,7 +3,7 @@
 <main class="container d-flex justify-content-center align-items-center my-5" style="min-height: 80vh;">
     <div class="row align-items-center">
         <div class="col-md-6 text-center">
-            <img src="/images/<%= manga.image.split('/').pop() %>" alt="<%= manga.title %>" class="img-fluid" style="max-width: 70%; height: auto;">
+            <img src="/<%= manga.image %>" class="card-img-top" alt="Manga Cover" style="height: 600px; object-fit: cover;">
         </div>
         <div class="col-md-6">
             <h1 class="fw-bold"><%= manga.title %></h1>
@@ -11,6 +11,7 @@
             <p><strong>Price:</strong> $<%= manga.price %></p>
             <p><strong>Offers Received:</strong> <%= manga.offers %></p>
             <p><strong>Seller:</strong> <%= manga.seller %></p>
+            <p><strong>Details:</strong> <%= manga.details %></p>
             <form>
                 <button type="submit" class="btn btn-primary" formmethod="GET" formaction="/mangas/<%= manga.id %>/edit">Edit</button>
                 <button type="submit" class="btn btn-danger" formmethod="POST" formaction="/mangas/<%= manga.id %>?_method=DELETE">Delete</button>
