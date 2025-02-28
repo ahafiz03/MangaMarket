@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const mangaRoutes = require('./routes/mangaRoutes');
+const mangaModel = require('./models/manga');
 
 // create app
 const app = express();

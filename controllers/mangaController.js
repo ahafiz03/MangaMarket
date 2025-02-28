@@ -1,6 +1,7 @@
 const model = require('../models/manga');
 exports.index = (req, res)=>{
     let mangas = model.find();
+    mangas.sort((a, b) => parseFloat(a.price.replace('$', '')) - parseFloat(b.price.replace('$', '')));
     res.render('./manga/index', {mangas});
 };
 
