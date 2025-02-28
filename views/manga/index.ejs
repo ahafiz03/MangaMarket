@@ -7,7 +7,7 @@
             <% mangas.forEach(manga => { %>
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="<%= manga.image.replace('./public', '') %>" class="card-img-top" alt="Manga Cover" style="height: 600px; object-fit: cover;">
+                        <img src="<%= manga.image ? manga.image.replace('./public', '') : '' %>" class="card-img-top" alt="Manga Cover" style="height: 600px; object-fit: cover;">
                         <div class="card-body">
                             <h5 class="card-title"><%= manga.title %></h5>
                             <p class="card-text">Condition: <%= manga.condition %></p>
