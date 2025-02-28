@@ -1,7 +1,14 @@
 const model = require('../models/manga');
 
 exports.index = (req, res) => {
+    const searchTerm = req.query.q ? req.query.q.toLowerCase() : null;
     let mangas = model.find();
+    if (searchTerm) {
+        mangas = mangas.filter(manga => 
+            manga.title.toLowerCase().includes(searchTerm) || 
+            manga.details.toLowerCase().includes(searchTerm)
+        );
+    }
     mangas.sort((a, b) => parseFloat(String(a.price).replace('$', '')) - parseFloat(String(b.price).replace('$', '')));
     res.render('manga/index', { mangas });
 };
