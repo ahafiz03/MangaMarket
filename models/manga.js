@@ -8,6 +8,7 @@ const mangas = [
         price: '$7.99',
         details: 'Attack on Titan Volume 5 in like new condition (soft cover). Buy now!',
         image: './public/images/aotvol5.jpg',
+        offers: 3,
         active: true
     },
     {
@@ -18,6 +19,7 @@ const mangas = [
         price: '$12.99',
         details: 'Death Note Volume 4 in good condition (hard cover). Buy now!',
         image: './public/images/deathnotevol4.jpg',
+        offers: 1,
         active: true
     },
     {
@@ -28,6 +30,7 @@ const mangas = [
         price: '$7.99',
         details: 'Fruits Basket Volume 1 in new condition (soft cover). Buy now!',
         image: './public/images/fruitsbasketvol1.jpg',
+        offers: 7,
         active: true
     },
     {
@@ -38,6 +41,7 @@ const mangas = [
         price: '$10.99',
         details: 'Jojos Bizarre Adventure Volume 10 in acceptable condition (hard cover). Buy now!',
         image: './public/images/jjbavol10.jpg',
+        offers: 2,
         active: true
     },
     {
@@ -48,6 +52,7 @@ const mangas = [
         price: '$9.99',
         details: 'Naruto Volume 17 in very good condition (soft cover). Buy now!',
         image: './public/images/narutovol17.jpg',
+        offers: 2,
         active: true
     },
     {
@@ -58,6 +63,7 @@ const mangas = [
         price: '$7.99',
         details: 'One Piece Volume 1 in new condition (soft cover). Buy now!',
         image: './public/images/onepiecevol1.jpg',
+        offers: 1,
         active: true
     }
 ];

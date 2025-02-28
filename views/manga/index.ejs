@@ -1,0 +1,28 @@
+<%- include('../partials/header.ejs') %>
+
+<main class="container my-5">
+    <h1 class="fw-bold text-center">Available Manga Listings</h1>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-4">
+        <% if (mangas.length) { %>
+            <% mangas.forEach(manga => { %>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="<%= manga.image.replace('./public', '') %>" class="card-img-top" alt="Manga Cover" style="height: 600px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= manga.title %></h5>
+                            <p class="card-text">Condition: <%= manga.condition %></p>
+                            <p class="card-text">Price: <%= manga.price %></p>
+                            <p class="card-text">Seller: <%= manga.seller %></p>
+                            <p class="card-text">Offers: <%= manga.offers %></p>
+                            <a href="/mangas/<%= manga.id %>" class="btn btn-dark">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p class="text-center">There are no manga listings available.</p>
+        <% } %>
+    </div>
+</main>
+
+<%- include('../partials/footer.ejs') %>
