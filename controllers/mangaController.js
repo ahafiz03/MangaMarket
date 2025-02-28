@@ -1,19 +1,26 @@
 const model = require('../models/manga');
-exports.index = (req, res)=>{
+
+exports.index = (req, res) => {
     let mangas = model.find();
-    mangas.sort((a, b) => parseFloat(a.price.replace('$', '')) - parseFloat(b.price.replace('$', '')));
-    res.render('./manga/index', {mangas});
+    mangas.sort((a, b) => parseFloat(String(a.price).replace('$', '')) - parseFloat(String(b.price).replace('$', '')));
+    res.render('./manga/index', { mangas });
 };
 
 exports.new = (req, res)=>{
     res.render('./manga/new');
 };
 
-exports.create = (req, res)=>{
+exports.create = (req, res) => {
     let manga = req.body;
+    if (req.file) {
+        manga.image = `images/${req.file.filename}`;
+    } else {
+        manga.image = 'images/default.jpg'; // Fallback if no image is uploaded
+    }
     model.save(manga);
     res.redirect('/mangas');
 };
+
 
 exports.show = (req, res, next)=>{
     let id = req.params.id;
