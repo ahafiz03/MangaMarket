@@ -1,7 +1,7 @@
 const {v4: uuidv4} = require('uuid');
 const mangas = [
     {
-        id: uuidv4(),
+        id: "1",
         title: 'Attack on Titan Vol. 5',
         seller: 'Anum',
         condition: 'Like New',
@@ -12,7 +12,7 @@ const mangas = [
         active: true
     },
     {
-        id: uuidv4(),
+        id: "2",
         title: 'Death Note Vol. 4',
         seller: 'Gavin',
         condition: 'Good',
@@ -23,7 +23,7 @@ const mangas = [
         active: true
     },
     {
-        id: uuidv4(),
+        id: "3",
         title: 'Fruits Basket Vol. 1',
         seller: 'Anum',
         condition: 'New',
@@ -34,7 +34,7 @@ const mangas = [
         active: true
     },
     {
-        id: uuidv4(),
+        id: "4",
         title: 'Jojos Bizarre Adventure Vol. 10',
         seller: 'Gavin',
         condition: 'Acceptable',
@@ -45,7 +45,7 @@ const mangas = [
         active: true
     },
     {
-    id: uuidv4(),
+        id: "5",
         title: 'Naruto Vol. 17',
         seller: 'Anum',
         condition: 'Very Good',
@@ -56,7 +56,7 @@ const mangas = [
         active: true
     },
     {
-        id: uuidv4(),
+        id: "6",
         title: 'One Piece Vol. 1',
         seller: 'Gavin',
         condition: 'New',
