@@ -3,7 +3,7 @@
 <main class="container d-flex justify-content-center align-items-center my-5" style="min-height: 80vh;">
     <div class="row align-items-center">
         <div class="col-md-6 text-center">
-            <img src="/<%= manga.image %>" class="card-img-top" alt="Manga Cover" style="height: 600px; object-fit: cover;">
+            <img src="/images/<%= manga.image.split('/')[2] %>" class="card-img-top" alt="Manga Cover" style="height: 600px; object-fit: cover;">
         </div>
         <div class="col-md-6">
             <h1 class="fw-bold"><%= manga.title %></h1>

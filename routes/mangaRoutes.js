@@ -1,9 +1,10 @@
 const express = require('express');
 const controller = require('../controllers/mangaController');
-const router = express.Router();
 const multer = require('multer');
 
-// Set up multer storage
+const router = express.Router();
+
+// Multer storage configuration
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'public/images/');
@@ -12,15 +13,16 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + '-' + file.originalname);
     }
 });
+
 const upload = multer({ storage: storage });
 
-// GET /mangas: send all mangas to the user
+// GET /mangas: Show all mangas
 router.get('/', controller.index);
 
-// GET /mangas/new: send html form for creating a new manga
+// GET /mangas/new: Form to create new manga
 router.get('/new', controller.new);
 
-// POST /mangas: create a new manga
+// POST /mangas: Create new manga (Apply multer here)
 router.post('/', upload.single('image'), controller.create);
 
 // GET /mangas/:id: send details of manga identified by id
@@ -30,7 +32,7 @@ router.get('/:id', controller.show);
 router.get('/:id/edit', controller.edit);
 
 // PUT /mangas/:id: update the manga identified by id
-router.put('/:id', controller.update);
+router.put('/:id', upload.single('image'), controller.update);
 
 // DELETE /mangas/:id: delete the manga identified by id
 router.delete('/:id', controller.delete);

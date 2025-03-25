@@ -1,7 +1,7 @@
 {
-  "name": "HafizAnumProject2",
+  "name": "hafizanumproject3",
   "version": "1.0.0",
-  "description": "An Express MVC app for Project 2 to buy/sell manga books",
+  "description": "An Express MVC app for Project 3 to buy/sell manga books",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,10 +11,19 @@
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.21.2",
-    "luxon": "^3.5.0",
+    "luxon": "^3.6.0",
     "method-override": "^3.0.0",
+    "mongoose": "^8.13.0",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "uuid": "^11.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahafiz03/MangaMarket.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ahafiz03/MangaMarket/issues"
+  },
+  "homepage": "https://github.com/ahafiz03/MangaMarket#readme"
 }
