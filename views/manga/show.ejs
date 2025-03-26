@@ -9,7 +9,7 @@
             <h1 class="fw-bold"><%= manga.title %></h1>
             <p><strong>Condition:</strong> <%= manga.condition %></p>
             <p><strong>Price:</strong> $<%= manga.price %></p>
-            <p><strong>Offers Received:</strong> <%= manga.offers %></p>
+            <p><strong>Offers Received:</strong> <%= manga.offers ? manga.offers : 0 %></p>
             <p><strong>Seller:</strong> <%= manga.seller %></p>
             <p><strong>Details:</strong> <%= manga.details %></p>
             <form>
