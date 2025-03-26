@@ -1,4 +1,5 @@
 // require modules
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
@@ -12,7 +13,7 @@ const app = express();
 let port = 3000;
 let host = 'localhost';
 app.set('view engine', 'ejs');
-const mongUri = 'mongodb+srv://admin:admin123@cluster0.butv1.mongodb.net/project3?retryWrites=true&w=majority&appName=Cluster0'
+const mongUri = process.env.MONGO_URI;
 
 //connect to MongoDB
 mongoose.connect(mongUri)
