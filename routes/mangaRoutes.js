@@ -25,6 +25,9 @@ router.get('/new', controller.new);
 // POST /mangas: Create new manga (Apply multer here)
 router.post('/', upload.single('image'), controller.create);
 
+// GET /mangas/search: Handle search results
+router.get('/search', controller.search);
+
 // GET /mangas/:id: send details of manga identified by id
 router.get('/:id', controller.show);
 

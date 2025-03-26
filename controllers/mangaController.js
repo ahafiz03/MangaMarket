@@ -2,23 +2,15 @@ const model = require('../models/manga');
 const multer = require('multer');
 
 exports.index = (req, res, next) => {
-    const searchTerm = req.query.q ? req.query.q.toLowerCase() : null;
-
     model.find()
-    .then(mangas => {
-        if (searchTerm) {
-            mangas = mangas.filter(manga => 
-                manga.title.toLowerCase().includes(searchTerm) || 
-                manga.details.toLowerCase().includes(searchTerm)
-            );
-        }
+        .then(mangas => {
+            mangas.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
 
-        mangas.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-
-        res.render('./manga/index', { mangas });
-    })
-    .catch(err => next(err));
+            res.render('./manga/index', { mangas });
+        })
+        .catch(err => next(err));
 };
+
 
 exports.new = (req, res) => {
     res.render('./manga/new');
@@ -158,4 +150,19 @@ exports.delete = (req, res, next) => {
         }
     })
     .catch(err => next(err));
+};
+
+exports.search = (req, res, next) => {
+    const searchTerm = req.query.q ? req.query.q.toLowerCase() : '';
+
+    model.find()
+        .then(mangas => {
+            const filteredMangas = mangas.filter(manga => 
+                manga.title.toLowerCase().includes(searchTerm) || 
+                manga.details.toLowerCase().includes(searchTerm)
+            );
+
+            res.render('./manga/search', { mangas: filteredMangas, searchTerm });
+        })
+        .catch(err => next(err));
 };
