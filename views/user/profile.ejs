@@ -1,0 +1,12 @@
+<%- include('../partials/header.ejs')%>
+    <h2>Welcome, <%=user.firstName%></h2>
+    <%if(mangas.length) {%>
+        <p>You are selling the following mangas:</p>
+        <%mangas.forEach(manga => {%>
+            <a href = '/mangas/<%= manga.id%>'><p><%=manga.title%></p></a>
+        <%});
+    } else {%>
+        <p>You are not selling any mangas.</p>
+    <%}%>
+    </div>
+    <%- include('../partials/footer.ejs')%>

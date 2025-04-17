@@ -24,8 +24,13 @@
             <nav>
                 <a href='/mangas' class="text-white me-3">Browse</a>
                 <a href='/mangas/new' class="text-white me-3">Sell</a>
-                <a href='/login' class="text-white me-3">Login</a>
-                <a href='/signup' class="text-white me-3">Sign Up</a>
+                <%if(!user) {%>
+                    <a href='/users/new' class="text-white me-3">Sign Up</a>
+                    <a href='/users/login' class="text-white me-3">Login</a>
+                <%} else {%>
+                    <a href='/users/profile'>Profile</a>
+                    <a href='/users/logout'>Logout</a>
+                <%}%>
             </nav>
         </div>
     </header>

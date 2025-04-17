@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const mangaSchema = new Schema({
     title: { type: String, required: [true, 'Title is required'] },
-    seller: { type: String, required: [true, 'Seller name is required'] },
+    member: { type: Schema.Types.ObjectId, ref: 'User'},
     condition: { 
         type: String, 
         enum: ['New', 'Like New', 'Very Good', 'Good', 'Acceptable'], 

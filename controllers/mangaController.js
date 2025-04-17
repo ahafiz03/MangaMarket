@@ -5,7 +5,6 @@ exports.index = (req, res, next) => {
     model.find()
         .then(mangas => {
             mangas.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-
             res.render('./manga/index', { mangas });
         })
         .catch(err => next(err));
@@ -30,7 +29,6 @@ const upload = multer({ storage: storage });
 
 exports.create = (req, res, next) => {
     let mangaData = req.body;
-
     if (req.file) {
         mangaData.image = '/images/' + req.file.filename;
     } else {
@@ -40,6 +38,7 @@ exports.create = (req, res, next) => {
     }
 
     let manga = new model(mangaData);
+    manga.member = req.session.user;
     manga.save()
     .then(() => res.redirect('/mangas'))
     .catch(err => {
@@ -53,15 +52,9 @@ exports.create = (req, res, next) => {
 
 
 exports.show = (req, res, next) => {
-    let id = req.params.id;
+    const id = req.params.id;
 
-    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error('Invalid manga id');
-        err.status = 400;
-        return next(err);
-    }
-
-    model.findById(id)
+    model.findById(id).populate('author', 'firstName lastName')
     .then(manga => {
         if (manga) {
             return res.render('./manga/show', { manga });
@@ -76,35 +69,15 @@ exports.show = (req, res, next) => {
 
 exports.edit = (req, res, next) => {
     let id = req.params.id;
-
-    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error('Invalid manga id');
-        err.status = 400;
-        return next(err);
-    }
-
     model.findById(id)
     .then(manga => {
-        if (manga) {
-            return res.render('./manga/edit', { manga });
-        } else {
-            let err = new Error('Cannot find a manga with id ' + id);
-            err.status = 404;
-            next(err);
-        }
+        return res.render('./manga/edit', { manga });
     })
     .catch(err => next(err));
 };
 
 exports.update = (req, res, next) => {
     let id = req.params.id;
-
-    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error('Invalid manga id');
-        err.status = 400;
-        return next(err);
-    }
-
     let updatedData = req.body;
     
     if (req.file) {
@@ -113,13 +86,7 @@ exports.update = (req, res, next) => {
 
     model.findByIdAndUpdate(id, updatedData, { runValidators: true, new: true })
     .then(manga => {
-        if (manga) {
-            res.redirect('/mangas/' + id);
-        } else {
-            let err = new Error('Cannot find a manga with id ' + id);
-            err.status = 404;
-            next(err);
-        }
+        res.redirect('/mangas/' + id);
     })
     .catch(err => {
         if (err.name === 'ValidationError') {
@@ -133,21 +100,9 @@ exports.update = (req, res, next) => {
 exports.delete = (req, res, next) => {
     let id = req.params.id;
 
-    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error('Invalid manga id');
-        err.status = 400;
-        return next(err);
-    }
-
-    model.findByIdAndDelete(id)
+    model.findByIdAndDelete(id, {useFindAndModify: false})
     .then(manga => {
-        if (manga) {
-            res.redirect('/mangas');
-        } else {
-            let err = new Error('Cannot find a manga with id ' + id);
-            err.status = 404;
-            next(err);
-        }
+        res.redirect('/mangas');
     })
     .catch(err => next(err));
 };
