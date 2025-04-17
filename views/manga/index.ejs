@@ -12,7 +12,7 @@
                             <h5 class="card-title"><%= manga.title %></h5>
                             <p class="card-text">Condition: <%= manga.condition %></p>
                             <p class="card-text">Price: $<%= manga.price %></p>
-                            <p class="card-text">Seller: <%= manga.seller %></p>
+                            <p class="card-text">Seller: <%= manga.member.firstName + ' ' + manga.member.lastName%></p>
                             <p class="card-text">Offers: <%= manga.offers ? manga.offers : 0 %></p>
                             <a href="/mangas/<%= manga.id %>" class="btn btn-dark">View Details</a>
                         </div>

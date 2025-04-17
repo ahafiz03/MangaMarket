@@ -13,12 +13,12 @@
             <p><strong>Offers Received:</strong> <%= manga.offers ? manga.offers : 0 %></p>
             <p><strong>Seller:</strong> <%= manga.member.firstName + ' ' + manga.member.lastName%></p>
             <p><strong>Details:</strong> <%= manga.details %></p>
-            <%if(user == manga.member._id) {%>
+            <!-- <%if(user == manga.member._id) {%>
             <form>
                 <button type="submit" class="btn btn-primary" formmethod="GET" formaction="/mangas/<%= manga.id %>/edit">Edit</button>
                 <button type="submit" class="btn btn-danger" formmethod="POST" formaction="/mangas/<%= manga.id %>?_method=DELETE">Delete</button>
             </form>
-            <%}%>
+            <%}%> -->
         </div>
     </div>
 </main>

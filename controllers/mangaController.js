@@ -3,12 +3,14 @@ const multer = require('multer');
 
 exports.index = (req, res, next) => {
     model.find()
+        .populate('member', 'firstName lastName')
         .then(mangas => {
             mangas.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
             res.render('./manga/index', { mangas });
         })
         .catch(err => next(err));
 };
+
 
 
 exports.new = (req, res) => {
@@ -40,7 +42,10 @@ exports.create = (req, res, next) => {
     let manga = new model(mangaData);
     manga.member = req.session.user;
     manga.save()
-    .then(() => res.redirect('/mangas'))
+    .then(() => {
+        req.flash('success', 'Successfully created listing')
+        res.redirect('/mangas');
+    })
     .catch(err => {
         if (err.name === 'ValidationError') {
             err.status = 400;
@@ -103,7 +108,7 @@ exports.delete = (req, res, next) => {
 
     model.findByIdAndDelete(id, {useFindAndModify: false})
     .then(manga => {
-        req.flash('error', 'Listing successfully deleted');
+        req.flash('success', 'Listing successfully deleted');
         res.redirect('/mangas');
     })
     .catch(err => next(err));

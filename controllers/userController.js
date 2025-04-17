@@ -8,20 +8,26 @@ exports.new = (req, res)=>{
 exports.create = (req, res, next)=>{
         let user = new model(req.body);
             user.save()
-            .then(user=> res.redirect('/users/login'))
-           .catch(err=>{
-               if(err.name === 'ValidationError' ) {
-                   req.flash('error', err.message);  
-                   return res.redirect('/users/new');
-               }
-
-               if(err.code === 11000) {
-                   req.flash('error', 'Email has been used');  
-                   return res.redirect('/users/new');
-               }
-                
-               next(err);
-           });
+            .then(user=>{ 
+                req.flash('success', 'Successfully created account');
+                res.redirect('/users/login');
+            })
+            .catch(err => {
+                if (err.name === 'ValidationError') {
+                    req.flash('error', err.message);
+                    return res.redirect('/users/new');
+                }
+                if (
+                    err.code === 11000 || 
+                    (err.cause && err.cause.code === 11000) || 
+                    err.message.toLowerCase().includes('duplicate') 
+                ) {
+                    req.flash('error', 'Email has been used');
+                    return res.redirect('/users/new');
+                }
+                next(err); 
+            });
+            
 };
 
 exports.getUserLogin = (req, res, next) => {
@@ -45,7 +51,7 @@ exports.login = (req, res, next)=>{
                 res.redirect('/users/profile');
             } else {
                 req.flash('error', 'Wrong password');      
-                res.redirect('/users/login');
+                return res.redirect('/users/login');
             }
         });     
     })
