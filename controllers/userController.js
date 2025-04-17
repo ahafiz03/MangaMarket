@@ -23,18 +23,6 @@ exports.create = (req, res, next)=>{
                next(err);
            });
 };
-// exports.create = (req, res, next)=>{
-//     console.log('Form Data:', req.body); // Add this
-//     let user = new model(req.body);
-//     user.save()
-//     .then(user=> {
-//         console.log('User created:', user); // Add this
-//         res.redirect('/users/login');
-//     })
-//     .catch(err=>{
-//         console.error('Error creating user:', err); // Add this
-//     });
-// };
 
 exports.getUserLogin = (req, res, next) => {
     return res.render('./user/login');

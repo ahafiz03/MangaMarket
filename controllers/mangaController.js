@@ -86,6 +86,7 @@ exports.update = (req, res, next) => {
 
     model.findByIdAndUpdate(id, updatedData, { runValidators: true, new: true })
     .then(manga => {
+        req.flash('success', 'Listing successfully updated');
         res.redirect('/mangas/' + id);
     })
     .catch(err => {
@@ -102,6 +103,7 @@ exports.delete = (req, res, next) => {
 
     model.findByIdAndDelete(id, {useFindAndModify: false})
     .then(manga => {
+        req.flash('error', 'Listing successfully deleted');
         res.redirect('/mangas');
     })
     .catch(err => next(err));

@@ -1,12 +1,46 @@
-<%- include('../partials/header.ejs')%>
-    <h2>Welcome, <%=user.firstName%></h2>
-    <%if(mangas.length) {%>
+<%- include('../partials/header.ejs') %>
+
+<main class="container my-5">
+    <h2>Welcome, <%= user.firstName %></h2>
+
+    <% if (mangas.length) { %>
         <p>You are selling the following mangas:</p>
-        <%mangas.forEach(manga => {%>
-            <a href = '/mangas/<%= manga.id%>'><p><%=manga.title%></p></a>
-        <%});
-    } else {%>
+        <div class="table-responsive" style="max-width: 1000px;">
+            <table class="table table-dark table-bordered align-middle text-center">
+                <thead class="table-light text-dark">
+                    <tr>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% mangas.forEach(manga => { %>
+                        <tr>
+                            <td class="text-start">
+                                <a href="/mangas/<%= manga.id %>" class="text-white text-decoration-none"><%= manga.title %></a>
+                            </td>
+                            <td>active</td>
+                            <td>
+                                <form class="d-inline">
+                                    <button type="submit" class="btn btn-sm btn-primary me-2" formmethod="GET" formaction="/mangas/<%= manga.id %>/edit" title="Edit">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                </form>
+                                <form class="d-inline">
+                                    <button type="submit" class="btn btn-sm btn-danger" formmethod="POST" formaction="/mangas/<%= manga.id %>?_method=DELETE" title="Delete">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    <% } else { %>
         <p>You are not selling any mangas.</p>
-    <%}%>
-    </div>
-    <%- include('../partials/footer.ejs')%>
+    <% } %>
+</main>
+
+<%- include('../partials/footer.ejs') %>
