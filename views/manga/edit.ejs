@@ -9,10 +9,6 @@
                 <input type="text" id="title" name="title" class="form-control" value="<%= manga.title %>" required>
             </div>
             <div class="mb-3">
-                <label for="seller" class="form-label">Seller</label>
-                <input type="text" id="seller" name="seller" class="form-control" value="<%= manga.seller %>" required>
-            </div>
-            <div class="mb-3">
                 <label for="condition" class="form-label">Condition</label>
                 <select id="condition" name="condition" class="form-select" required>
                     <option value="New" <% if (manga.condition === 'New') { %>selected<% } %>>New</option>

@@ -54,7 +54,7 @@ exports.create = (req, res, next) => {
 exports.show = (req, res, next) => {
     const id = req.params.id;
 
-    model.findById(id).populate('author', 'firstName lastName')
+    model.findById(id).populate('member', 'firstName lastName')
     .then(manga => {
         if (manga) {
             return res.render('./manga/show', { manga });
