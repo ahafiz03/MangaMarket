@@ -17,13 +17,12 @@ exports.new = (req, res) => {
     res.render('./manga/new');
 };
 
-// Configure Multer for file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'public/images/'); // Save files to the "public/uploads" folder
+        cb(null, 'public/images/'); 
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + '-' + file.originalname); // Unique filename
+        cb(null, Date.now() + '-' + file.originalname); 
     }
 });
 
