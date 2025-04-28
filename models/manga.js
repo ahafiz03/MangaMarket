@@ -17,6 +17,8 @@ const mangaSchema = new Schema({
     details: { type: String, required: [true, 'Details are required'] },
     image: { type: String, required: [true, 'Image file path is required'] },
     active: { type: Boolean, default: true },
+    totalOffers: { type: Number, default: 0 }, 
+    highestOffer: { type: Number, default: 0 },
     createdAt: { type: Date, default: Date.now }
 }, { timestamps: true });
 

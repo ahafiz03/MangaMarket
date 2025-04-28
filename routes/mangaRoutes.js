@@ -1,8 +1,9 @@
 const express = require('express');
 const controller = require('../controllers/mangaController');
-const {isLoggedIn, isMember} = require('../middlewares/auth');
-const {validateId} = require('../middlewares/validator');
+const { isLoggedIn, isMember } = require('../middlewares/auth');
+const { validateId, validateManga } = require('../middlewares/validator');
 const multer = require('multer');
+const offerRoutes = require('./offerRoutes');
 
 const router = express.Router();
 
@@ -24,8 +25,8 @@ router.get('/', controller.index);
 // GET /mangas/new: Form to create new manga
 router.get('/new', isLoggedIn, controller.new);
 
-// POST /mangas: Create new manga (Apply multer here)
-router.post('/', upload.single('image'), isLoggedIn, controller.create);
+// POST /mangas: Create new manga
+router.post('/', upload.single('image'), isLoggedIn, validateManga, controller.create);
 
 // GET /mangas/search: Handle search results
 router.get('/search', controller.search);
@@ -37,9 +38,12 @@ router.get('/:id', validateId, controller.show);
 router.get('/:id/edit', validateId, isLoggedIn, isMember, controller.edit);
 
 // PUT /mangas/:id: update the manga identified by id
-router.put('/:id', upload.single('image'), validateId, isLoggedIn, isMember, controller.update);
+router.put('/:id', upload.single('image'), validateId, isLoggedIn, isMember, validateManga, controller.update);
 
 // DELETE /mangas/:id: delete the manga identified by id
 router.delete('/:id', validateId, isLoggedIn, isMember, controller.delete);
+
+// Mount offer routes under mangas/:id/offers
+router.use('/:id/offers', offerRoutes);
 
 module.exports = router;

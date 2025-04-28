@@ -28,11 +28,18 @@
                                     </button>
                                 </form>
                                 <form class="d-inline">
-                                    <button type="submit" class="btn btn-sm btn-danger" formmethod="POST" formaction="/mangas/<%= manga.id %>?_method=DELETE" title="Delete">
+                                    <button type="submit" class="btn btn-sm btn-danger me-2" formmethod="POST" formaction="/mangas/<%= manga.id %>?_method=DELETE" title="Delete">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </form>
-                            </td>
+                                <form class="d-inline">
+                                    <button type="submit" class="btn btn-sm btn-warning"
+                                        formmethod="GET" formaction="/mangas/<%= manga.id %>/offers"
+                                        <% if (manga.totalOffers === 0) { %> disabled <% } %>>
+                                        View Offers
+                                    </button>
+                                </form>
+                            </td>                            
                         </tr>
                     <% }); %>
                 </tbody>

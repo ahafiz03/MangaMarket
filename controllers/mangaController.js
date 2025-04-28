@@ -1,4 +1,5 @@
 const model = require('../models/manga');
+const Offer = require('../models/offer');
 const multer = require('multer');
 
 exports.index = (req, res, next) => {
@@ -101,13 +102,20 @@ exports.update = (req, res, next) => {
     });
 };
 
-
 exports.delete = (req, res, next) => {
     let id = req.params.id;
 
-    model.findByIdAndDelete(id, {useFindAndModify: false})
-    .then(manga => {
-        req.flash('success', 'Listing successfully deleted');
+    Promise.all([
+        model.findByIdAndDelete(id),
+        Offer.deleteMany({ manga: id })
+    ])
+    .then(([manga, offers]) => {
+        if (!manga) {
+            let err = new Error('Cannot find a manga with id ' + id);
+            err.status = 404;
+            return next(err);
+        }
+        req.flash('success', 'Listing and associated offers successfully deleted');
         res.redirect('/mangas');
     })
     .catch(err => next(err));

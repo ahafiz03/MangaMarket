@@ -13,13 +13,31 @@
             <p><strong>Offers Received:</strong> <%= manga.offers ? manga.offers : 0 %></p>
             <p><strong>Seller:</strong> <%= manga.member.firstName + ' ' + manga.member.lastName%></p>
             <p><strong>Details:</strong> <%= manga.details %></p>
-            <!-- <%if(user == manga.member._id) {%>
-            <form>
-                <button type="submit" class="btn btn-primary" formmethod="GET" formaction="/mangas/<%= manga.id %>/edit">Edit</button>
-                <button type="submit" class="btn btn-danger" formmethod="POST" formaction="/mangas/<%= manga.id %>?_method=DELETE">Delete</button>
-            </form>
-            <%}%> -->
         </div>
+        <div><% if (manga.active && user && user.toString() !== manga.member._id.toString()) { %>
+            <hr>
+            <h4>Make an Offer</h4>
+            <form action="/mangas/<%= manga.id %>/offers" method="POST">
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Offer Amount ($)</label>
+                    <input type="number" id="amount" name="amount" class="form-control" min="0.01" step="0.01" required>
+                </div>
+                <button type="submit" class="btn btn-dark">Submit Offer</button>
+            </form>
+        <% } %>
+        
+        <% if (manga.active) { %>
+            <% if (manga.totalOffers > 0) { %>
+                <hr>
+                <h4>Offers So Far</h4>
+                <p>Total Offers: <%= manga.totalOffers %></p>
+                <p>Highest Offer: $<%= manga.highestOffer.toFixed(2) %></p>
+            <% } %>
+        <% } else { %>
+            <hr>
+            <h4 class="text-danger">This item is no longer available</h4>
+        <% } %>        
+        </div>       
     </div>
 </main>
 
