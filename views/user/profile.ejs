@@ -20,7 +20,7 @@
                             <td class="text-start">
                                 <a href="/mangas/<%= manga.id %>" class="text-white text-decoration-none"><%= manga.title %></a>
                             </td>
-                            <td>active</td>
+                            <td><%= manga.active ? 'Active' : 'Inactive' %></td>
                             <td>
                                 <form class="d-inline">
                                     <button type="submit" class="btn btn-sm btn-primary me-2" formmethod="GET" formaction="/mangas/<%= manga.id %>/edit" title="Edit">
