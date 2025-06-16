@@ -45,6 +45,7 @@ Clone this repository:
 
 ```bash
     git clone https://github.com/ahafiz03/MangaMarket.git
+
     cd MangaMarket
 ```
 **Install Dependencies**
