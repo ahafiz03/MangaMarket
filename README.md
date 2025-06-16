@@ -24,16 +24,16 @@ The MangaMarket Web Application is a Node.js and Express-based web application t
 
 ## Folder Structure (Overview)
 ```bash
-**controllers/** – Includes the business logic for handling requests related to users, mangas, and offers.
-**middlewares/** – Custom middleware functions for authentication, authorization, and input validation.
-**models/** – Contains Mongoose schema definitions for users, mangas, and offers.
-**public/** – Holds static files like CSS, images, and client-side JavaScript.
-**routes/** – Defines all route handlers using Express routers, separated by resource (e.g., users, mangas, offers).
-**views/** – Contains EJS templates for rendering frontend pages, including subfolders like partials/, manga/, user/, and offer/.
-**.gitignore** - Git ignore file
-**README.md** - Project documentation
-**app.js** – The main application file where Express is configured and routes are registered.
-**package.json** – Lists project dependencies and scripts.
+controllers/       # Includes the business logic for handling requests related to users, mangas, and offers.
+middlewares/       # Custom middleware functions for authentication, authorization, and input validation.
+models/            # Contains Mongoose schema definitions for users, mangas, and offers.
+public/            # Holds static files like CSS, images, and client-side JavaScript.
+routes/            # Defines all route handlers using Express routers, separated by resource (e.g., users, mangas, offers).
+views/             # Contains EJS templates for rendering frontend pages, including subfolders like partials/, manga/, user/, and offer/.
+.gitignore         # Git ignore file
+README.md          # Project documentation
+app.js             # The main application file where Express is configured and routes are registered.
+package.json       # Lists project dependencies and scripts.
 ```
 ## Installation & Setup
 
