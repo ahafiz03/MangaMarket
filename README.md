@@ -1,18 +1,19 @@
 
 # MangaMarket
 
-The MangaMarket Web Application is a Node.js and Express-based web application that allows users to search and browse manga titles securely. The project implements secure data handling, input validation, and efficient query processing to protect against common security vulnerabilities such as injection attacks. This project was created as part of the ITIS 5166: Network-Based Application Development course at UNC Charlotte, and will be updated until May 2025.
+The MangaMarket Web Application is a Node.js and Express-based web application that allows users to search and browse manga titles securely, allowing users to browse, list, and make offers on rare manga titles. The project emphasizes secure coding practices including authentication, authorization, input validation, and protection against injection and XSS attacks. This project was created as part of the ITIS 5166: Network-Based Application Development course at UNC Charlotte
 
 
 
 
 ## Features
-
-- Secure Full-Text Search -> implements server-side filtering and query sanitization to prevent injection attacks.
-- RESTful API Architecture, which uses Express.js to manage CRUD operations securely.
-- MongoDB Data Storage, to securely store manga data with Mongoose models and schema validation.
-- Error Handling & Input Validation: Protects against invalid input and unauthorized access.
-- Sorting & Filtering: Sorts manga by price and keyword search for enhanced usability.
+- Secure Full-Text Search --> Implements server-side filtering and sanitization to mitigate NoSQL injection.
+- Role-Based Access Control --> Only manga owners can edit/delete listings or accept offers.
+- Offer System --> Authenticated users can make offers on active manga, tracked securely per item.
+- Image Upload Security --> Uses Multer for file uploads, with restrictions to prevent spoofed file types.
+- Input Validation --> All forms validated and sanitized to protect against XSS and malformed data.
+- RESTful API Design --> Clean and secure routing via Express controllers and middleware.
+- Session-Based Authentication --> Passwords securely hashed with bcrypt and stored via Mongoose.
 ## Tech Stack
 
 **Backend:** Node.js, Express.js
@@ -21,8 +22,18 @@ The MangaMarket Web Application is a Node.js and Express-based web application t
 
 **Templating Engine:** EJS
 
-**Security Measures:** Input validation, error handling, secure routing
+**Security Measures and Middlware:** Input validation, error handling, secure routing, bcrypt, express-validator, multer, express-session
 
+## Folder Structure (Overview)
+MangaMarket/
+│
+├── models/          # Mongoose schemas for users, mangas, offers
+├── controllers/     # Logic for handling routes and DB interaction
+├── views/           # EJS templates for frontend
+├── public/          # Static assets (images, CSS)
+├── routes/          # Express routers
+├── middlewares/     # Auth and validator logic
+└── app.js           # Main application entry
 
 ## Installation & Setup
 
@@ -54,23 +65,27 @@ if neither of these work, use:
 ```
 **Accessing the Application**
 
-Enter localhost:300 in your browser's search bar and give it a try!
-## Security Considerations:
+Enter http://localhost:3000 in your browser's search bar and give it a try!
+
+## Security Features
 
 **Implemented Security Measures:**
+- Input validation & sanitation using express-validator
+- Passwords securely hashed with bcrypt
+- Server-side authorization using session-based checks
+- Custom error handling to avoid leaking stack traces
+- Role restrictions: Only the item owner can manage offers or delete the listing
+- Query sanitization to prevent NoSQL injection
+- Secure file upload handling with multer
 
-- Multer for Secure Image Uploads to prevent file-type spoofing
 
-- Sanitized search queries to prevent NoSQL injection
-
-- Proper error handling to prevent information leakage
-
-- Restricted API access (upcoming authentication & role-based control)
 ## Future Prospects
 
 **Planned Features**
-- User authentication and role-based access control
-
+- OAuth login or two-factor authentication
 - Secure payment integration for manga purchases
+- Admin dashboard with activity logging and monitoring
+- Email notifications on accepted offers
 
-- Logging and monitoring for security auditing
+## Developed By:
+Anum Hafiz – Master’s in Cybersecurity @ UNC Charlotte
