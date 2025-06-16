@@ -1,7 +1,7 @@
 
 # MangaMarket
 
-The MangaMarket Web Application is a Node.js and Express-based web application that allows users to search and browse manga titles securely, allowing users to browse, list, and make offers on rare manga titles. The project emphasizes secure coding practices including authentication, authorization, input validation, and protection against injection and XSS attacks. This project was created as part of the ITIS 5166: Network-Based Application Development course at UNC Charlotte.
+The MangaMarket Web Application is a Node.js and Express-based web application that allows users to search and browse manga titles securely, which les users browse, list, and make offers on rare manga titles. This project primarily focuses secure coding practices including authentication, authorization, input validation, and protection against injection and XSS attacks. This project was created as part of the ITIS 5166: Network-Based Application Development course at UNC Charlotte.
 
 
 ## Features
