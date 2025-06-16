@@ -1,9 +1,7 @@
 
 # MangaMarket
 
-The MangaMarket Web Application is a Node.js and Express-based web application that allows users to search and browse manga titles securely, allowing users to browse, list, and make offers on rare manga titles. The project emphasizes secure coding practices including authentication, authorization, input validation, and protection against injection and XSS attacks. This project was created as part of the ITIS 5166: Network-Based Application Development course at UNC Charlotte
-
-
+The MangaMarket Web Application is a Node.js and Express-based web application that allows users to search and browse manga titles securely, allowing users to browse, list, and make offers on rare manga titles. The project emphasizes secure coding practices including authentication, authorization, input validation, and protection against injection and XSS attacks. This project was created as part of the ITIS 5166: Network-Based Application Development course at UNC Charlotte.
 
 
 ## Features
@@ -25,15 +23,16 @@ The MangaMarket Web Application is a Node.js and Express-based web application t
 **Security Measures and Middlware:** Input validation, error handling, secure routing, bcrypt, express-validator, multer, express-session
 
 ## Folder Structure (Overview)
-MangaMarket/
-│
-├── models/          # Mongoose schemas for users, mangas, offers
-├── controllers/     # Logic for handling routes and DB interaction
-├── views/           # EJS templates for frontend
-├── public/          # Static assets (images, CSS)
-├── routes/          # Express routers
-├── middlewares/     # Auth and validator logic
-└── app.js           # Main application entry
+**controllers/** – Includes the business logic for handling requests related to users, mangas, and offers.
+**middlewares/** – Custom middleware functions for authentication, authorization, and input validation.
+**models/** – Contains Mongoose schema definitions for users, mangas, and offers.
+**public/** – Holds static files like CSS, images, and client-side JavaScript.
+**routes/** – Defines all route handlers using Express routers, separated by resource (e.g., users, mangas, offers).
+**views/** – Contains EJS templates for rendering frontend pages, including subfolders like partials/, manga/, user/, and offer/.
+**.gitignore** - Git ignore file
+**README.md** - Project documentation
+**app.js** – The main application file where Express is configured and routes are registered.
+**package.json** – Lists project dependencies and scripts.
 
 ## Installation & Setup
 
@@ -87,5 +86,5 @@ Enter http://localhost:3000 in your browser's search bar and give it a try!
 - Admin dashboard with activity logging and monitoring
 - Email notifications on accepted offers
 
-## Developed By:
+## Developed By
 Anum Hafiz – Master’s in Cybersecurity @ UNC Charlotte
