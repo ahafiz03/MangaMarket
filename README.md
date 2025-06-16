@@ -23,6 +23,7 @@ The MangaMarket Web Application is a Node.js and Express-based web application t
 **Security Measures and Middlware:** Input validation, error handling, secure routing, bcrypt, express-validator, multer, express-session
 
 ## Folder Structure (Overview)
+```bash
 **controllers/** – Includes the business logic for handling requests related to users, mangas, and offers.
 **middlewares/** – Custom middleware functions for authentication, authorization, and input validation.
 **models/** – Contains Mongoose schema definitions for users, mangas, and offers.
@@ -33,7 +34,7 @@ The MangaMarket Web Application is a Node.js and Express-based web application t
 **README.md** - Project documentation
 **app.js** – The main application file where Express is configured and routes are registered.
 **package.json** – Lists project dependencies and scripts.
-
+```
 ## Installation & Setup
 
 **Prerequisites**
